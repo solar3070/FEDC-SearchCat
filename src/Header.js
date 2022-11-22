@@ -1,6 +1,11 @@
 import Keyword from "./Keyword.js";
 
-export default function Header({ $target, initialState, onKeywordInput }) {
+export default function Header({
+  $target,
+  initialState,
+  onKeywordInput,
+  onEnter,
+}) {
   const $header = document.createElement("header");
   $header.className = "Header";
 
@@ -11,7 +16,7 @@ export default function Header({ $target, initialState, onKeywordInput }) {
   this.setState = (nextState) => {
     if (this.state.keyword !== nextState.keyword) {
       this.state = nextState;
-      
+
       keyword.setState({
         value: this.state.keyword,
       });
@@ -29,5 +34,6 @@ export default function Header({ $target, initialState, onKeywordInput }) {
       keyword: this.state.keyword,
     },
     onKeywordInput,
+    onEnter,
   });
 }
